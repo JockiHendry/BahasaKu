@@ -1,0 +1,15 @@
+a <- 10
+b <- 20
+c <- a + b
+tampilkan c
+tampilkan c * 2 + a * 2 - b * 2
+nama <- 'Solid Snake'
+tampilkan nama
+a <- iya
+tampilkan a
+b <- tidak
+tampilkan b
+acak <- buat java.util.Random()
+tampilkan acak.nextInt()
+f <- buat javax.swing.JFrame()
+f#setSize(100,100)#setDefaultCloseOperation(3)#setVisible(iya)

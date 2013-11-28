@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'com.wordpress.thesolidsnake.bahasaku.Main'
+
+ext {
+    antlrPackage = 'com.wordpress.thesolidsnake.bahasaku.grammar'
+    antlrTargetDir = "src/main/java/${antlrPackage.replace('.','/')}"
+    antlrGrammar = 'src/main/resources/BahasaKu.g4'
+    sourceForRun = 'src/test/resources/Latihan.baku'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.antlr', name: 'antlr4', version: '4.1'
+    compile group: 'org.ow2.asm', name: 'asm-all', version: '4.2'
+}
+
+task antlr4generate(type: JavaExec) {
+    description 'Menghasilkan Visitors Dari ANTLR 4'
+    main 'org.antlr.v4.Tool'
+    classpath project.configurations.runtime
+    args '-o', antlrTargetDir
+    args '-no-listener'
+    args '-visitor'
+    args '-package', antlrPackage
+    args antlrGrammar
+}
+
+task wrapper(type: Wrapper) {
+}
+
+compileJava {
+    dependsOn antlr4generate
+}
+
+run {
+    args sourceForRun
+}

@@ -1,0 +1,4 @@
+f <- buat javax.swing.JFrame('Program BahasaKu')
+l <- buat javax.swing.JLabel('Ini Dibuat Dengan BahasaKu!')
+f.add(l)
+f#pack()#setDefaultCloseOperation(3)#setVisible(iya)
